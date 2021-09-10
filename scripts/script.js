@@ -1,7 +1,12 @@
+// Declare scores
+let playerScore = 0;
+let compScore = 0;
+let totalRounds = 5;
 // Play a single round
 const playRound = () => {
     // Ask for a user's input
     const playerSelection = prompt('Please choose 1 of 3 options: rock, paper, or scissors:');
+    
     let playerPlay = playerSelection.toUpperCase();
     // Create a function to randomly return a number 1 - 3
     let random = Math.ceil(Math.random() * 3);
@@ -29,19 +34,38 @@ const playRound = () => {
     // Condition
     if (playerPlay === computerPlay){
         console.log('Draw');
-    } else if ( (playerPlay === 'ROCK' && computerPlay === 'PAPER') || (playerPlay === 'SCISSORS' && computerPlay === 'ROCK') || (playerPlay === 'PAPER' && computerPlay === 'SCISSORS') ){
+    } else if ( (playerPlay === 'ROCK' && computerPlay === 'PAPER') || 
+                (playerPlay === 'SCISSORS' && computerPlay === 'ROCK') || 
+                (playerPlay === 'PAPER' && computerPlay === 'SCISSORS') ){
         console.log('You lose');
-    } else if ( (playerPlay === 'ROCK' && computerPlay === 'SCISSORS') || (playerPlay === 'SCISSORS' && computerPlay === 'PAPER') || (playerPlay === 'PAPER' && computerPlay === 'ROCK') ){
+        compScore = ++compScore;
+        
+    } else if ( (playerPlay === 'ROCK' && computerPlay === 'SCISSORS') || 
+                (playerPlay === 'SCISSORS' && computerPlay === 'PAPER') || 
+                (playerPlay === 'PAPER' && computerPlay === 'ROCK') ){
         console.log('You won');
+        playerScore = ++playerScore;
+        
     } else {
         console.log('You need to choose 1 of 3 options:rock, paper, or scissors.');
     }
 }
 // Play five games then print the results
 const game = () => {
-    for (let i = 1; i <= 5; i++){
-        console.log(`Game #${i}:`);
+    while (compScore < totalRounds && playerScore < totalRounds){
         playRound();
+        console.log(`Computer's score: ${compScore}`);
+        console.log(`Player's score: ${playerScore}`);
+    }
+    if (compScore < totalRounds || playerScore < totalRounds){
+        declareWinner();
+    }
+}
+function declareWinner(){
+    if (compScore > playerScore){
+        console.log(`Computer has won ${totalRounds} rounds.`)
+    } else {
+        console.log(`You have won ${totalRounds} rounds.`)
     }
 }
 game();
