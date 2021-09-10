@@ -34,7 +34,7 @@ const playRound = () => {
     } else if ( (playerPlay === 'ROCK' && computerPlay === 'SCISSORS') || (playerPlay === 'SCISSORS' && computerPlay === 'PAPER') || (playerPlay === 'PAPER' && computerPlay === 'ROCK') ){
         console.log('You won');
     } else {
-        console.log('You need to choose 1 of 3 options.');
+        console.log('You need to choose 1 of 3 options:rock, paper, or scissors.');
     }
 }
 // Play five games then print the results
