@@ -48,7 +48,7 @@ function compareSelections(playerPlay, computerPlay){
 function playRound(){
     let playerSelection = prompt('Please choose 1 of 3 options: rock, paper, or scissors:');
     let playerPlay = playerSelection.toUpperCase();
-        compareSelections(playerPlay, computerPlay);
+    compareSelections(playerPlay, computerPlay);
         
 }
 
