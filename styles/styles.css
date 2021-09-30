@@ -1,7 +1,6 @@
 html {
     font-size: 10px;
-
-    background: url('./../resources/halloween-background.jpg') center center;
+    background: url('./../resources/main-background.jpg') center center;
     background-size: cover;
 
     /* background-image: linear-gradient(to right, #434343 0%, black 100%); */
@@ -13,7 +12,7 @@ html {
     font-family: sans-serif;
   }
   
-  .keys {
+  .items {
     display: flex;
     flex: 1;
     min-height: 100vh;
@@ -21,37 +20,23 @@ html {
     justify-content: center;
   }
   
-  .key {
+  .item {
     border: .4rem solid #FFF;
     border-radius: .5rem;
     margin: 1rem;
     font-size: 1.5rem;
-    padding: 1rem .5rem;
+    padding: 1.5rem .5rem;
     transition: all .07s ease;
-    width: 10rem;
+    width: 15rem;
     text-align: center;
     color: white;
     background: rgba(255,255,255,0.1);
     text-shadow: 0 0 .5rem black;
   }
   
-  .playing {
+  .item:active {
     transform: scale(1.1);
     border-color: #ffc600;
     box-shadow: 0 0 1rem #ffc600;
-  }
-  
-  img {
-    display: block;
-    font-size: 4rem;
-    max-width: 100%;
-    margin-bottom: 5px;
-  }
-  
-  .choices {
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    letter-spacing: .1rem;
-    color: #ffc600;
   }
   
