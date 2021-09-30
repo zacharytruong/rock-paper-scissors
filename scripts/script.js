@@ -74,4 +74,4 @@ function startGame(){
     declareWinner(); 
 }
 
-startGame();
+// startGame();
