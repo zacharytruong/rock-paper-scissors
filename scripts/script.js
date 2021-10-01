@@ -42,7 +42,6 @@ function compareSelections(){
             (playerSelection === 'scissor' && compPlay() === 'rock') || 
             (playerSelection === 'paper' && compPlay() === 'scissor') ){
     compScore = ++compScore;
-    info.innerText = '';
     info.innerText = `Your choice: ${playerSelection}
                   Computer's choice: ${compSelection}
                   You lost this round.
@@ -53,7 +52,6 @@ function compareSelections(){
             (playerSelection === 'scissor' && compPlay() === 'paper') || 
             (playerSelection === 'paper' && compPlay() === 'rock') ){
     playerScore = ++playerScore;
-    info.innerText = '';
     info.innerText = `Your choice: ${playerSelection}
                   Computer's choice: ${compSelection}
                   You won this round.
@@ -61,7 +59,6 @@ function compareSelections(){
                   Computer has won: ${compScore}`;
     div.appendChild(info);
   } else {
-    info.innerText = '';
     info.innerText = `Your choice: ${playerSelection}
                   Computer's choice: ${compSelection}
                   Draw!
