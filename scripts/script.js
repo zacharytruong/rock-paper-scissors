@@ -17,14 +17,16 @@ div.appendChild(info);
 
 const buttons = document.querySelectorAll('button');
 buttons.forEach(setPlayerSelection);
-
-  function setPlayerSelection(button){
-    button.addEventListener('click', playRound);
-    function playRound(e){
-      playerSelection = e.target.id;
+function setPlayerSelection(button){
+  button.addEventListener('click', playRound);
+  function playRound(e){
+    playerSelection = e.target.id;
+    while (playerScore < totalRounds && compScore < totalRounds){
       compPlay();
       compareSelections();
     }
+    declareWinner();
+  }
 }
 
 // Generate a random number, then assign it as computer selection
@@ -71,5 +73,11 @@ function compareSelections(){
 
 // Declare a winner when player or computer has won total rounds
 function declareWinner(){
-    
+  if (playerScore < compScore){
+    info.innerText = `Computer has won total ${totalRounds} rounds.`;
+    div.appendChild(info);
+  } else {
+    info.innerText = `You has won total ${totalRounds} rounds.`;
+    div.appendChild(info);
+  }
 }
