@@ -31,7 +31,7 @@ html {
     width: 15rem;
     text-align: center;
     color: white;
-    background: rgba(255,255,255,0.1);
+    background: rgba(0,0,0,0.3);
     text-shadow: 0 0 .5rem black;
   }
   
@@ -50,6 +50,6 @@ html {
     transition: all .07s ease;
     width: 70%;
     color: white;
-    background: rgba(255,255,255,0.1);
+    background: rgba(0,0,0,0.5);
     text-shadow: 0 0 .5rem black;
   }

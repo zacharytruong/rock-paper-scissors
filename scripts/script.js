@@ -4,25 +4,27 @@ let compScore = 0;
 let totalRounds = 5;
 let playerSelection = '';
 let compSelection = '';
-const playerInfo = document.querySelector('.playerInfo');
-const compInfo = document.querySelector('.compInfo');
-const singleGameResult = document.querySelector('.compInfo');
-const currentPlayerScore = document.querySelector('.currentPlayerScore');
-const currentCompScore = document.querySelector('.currentCompScore');
-const finalResult = document.querySelector('.finalResult');
 const itemArr = ['rock', 'paper', 'scissor'];
+
+const div = document.querySelector('.info');
+const info = document.createElement('p');
+info.innerText = `Your choice: None
+                  Computer's choice: None
+                  You have won: None
+                  Computer has won: None`;
+div.appendChild(info);
 
 
 const buttons = document.querySelectorAll('button');
 buttons.forEach(setPlayerSelection);
 
-function setPlayerSelection(button){
-    button.addEventListener('click', findID);
-    function findID(e){
+  function setPlayerSelection(button){
+    button.addEventListener('click', playRound);
+    function playRound(e){
       playerSelection = e.target.id;
-      return playerSelection;
+      compPlay();
+      compareSelections();
     }
-    return playerSelection;
 }
 
 // Generate a random number, then assign it as computer selection
@@ -38,30 +40,36 @@ function compareSelections(){
             (playerSelection === 'scissor' && compPlay() === 'rock') || 
             (playerSelection === 'paper' && compPlay() === 'scissor') ){
     compScore = ++compScore;
-    
+    info.innerText = '';
+    info.innerText = `Your choice: ${playerSelection}
+                  Computer's choice: ${compSelection}
+                  You lost this round.
+                  You have won: ${playerScore}
+                  Computer has won: ${compScore}`;
+    div.appendChild(info);
   } else if ( (playerSelection === 'rock' && compPlay() === 'scissor') || 
             (playerSelection === 'scissor' && compPlay() === 'paper') || 
             (playerSelection === 'paper' && compPlay() === 'rock') ){
-    
     playerScore = ++playerScore;
+    info.innerText = '';
+    info.innerText = `Your choice: ${playerSelection}
+                  Computer's choice: ${compSelection}
+                  You won this round.
+                  You have won: ${playerScore}
+                  Computer has won: ${compScore}`;
+    div.appendChild(info);
   } else {
-
+    info.innerText = '';
+    info.innerText = `Your choice: ${playerSelection}
+                  Computer's choice: ${compSelection}
+                  Draw!
+                  You have won: ${playerScore}
+                  Computer has won: ${compScore}`;
+    div.appendChild(info);
     }
-}
-
-// Play a single round
-function playRound(){
-        
 }
 
 // Declare a winner when player or computer has won total rounds
 function declareWinner(){
     
 }
-
-// Play game until player or computer has won total rounds
-function startGame(){
-    
-}
-
-// startGame();
