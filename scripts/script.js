@@ -16,31 +16,22 @@ div.appendChild(info);
 
 
 const buttons = document.querySelectorAll('button');
-buttons.forEach(setPlayerSelection);
-function setPlayerSelection(button){
+
+buttons.forEach(startGame);
+function startGame(button){
   button.addEventListener('click', playRound);
   function playRound(e){
     playerSelection = e.target.id;
-    while (playerScore < totalRounds && compScore < totalRounds){
-      compPlay();
-      compareSelections();
-    }
-    declareWinner();
+    let randomNumber = Math.floor(Math.random() * 3);
+    compSelection = itemArr[randomNumber];
+    compareSelections();
   }
 }
 
-// Generate a random number, then assign it as computer selection
-
-function compPlay(){
-  let randomNumber = Math.floor(Math.random() * 3);
-  return compSelection = itemArr[randomNumber];
-}
-
-// Compare user's selection and computer's selection
 function compareSelections(){
-  if ( (playerSelection === 'rock' && compPlay() === 'paper') || 
-            (playerSelection === 'scissor' && compPlay() === 'rock') || 
-            (playerSelection === 'paper' && compPlay() === 'scissor') ){
+  if ( (playerSelection === 'rock' && compSelection === 'paper') || 
+            (playerSelection === 'scissor' && compSelection === 'rock') || 
+            (playerSelection === 'paper' && compSelection === 'scissor') ){
     compScore = ++compScore;
     info.innerText = `Your choice: ${playerSelection}
                   Computer's choice: ${compSelection}
@@ -48,9 +39,9 @@ function compareSelections(){
                   You have won: ${playerScore}
                   Computer has won: ${compScore}`;
     div.appendChild(info);
-  } else if ( (playerSelection === 'rock' && compPlay() === 'scissor') || 
-            (playerSelection === 'scissor' && compPlay() === 'paper') || 
-            (playerSelection === 'paper' && compPlay() === 'rock') ){
+  } else if ( (playerSelection === 'rock' && compSelection === 'scissor') || 
+            (playerSelection === 'scissor' && compSelection === 'paper') || 
+            (playerSelection === 'paper' && compSelection === 'rock') ){
     playerScore = ++playerScore;
     info.innerText = `Your choice: ${playerSelection}
                   Computer's choice: ${compSelection}
@@ -68,7 +59,6 @@ function compareSelections(){
     }
 }
 
-// Declare a winner when player or computer has won total rounds
 function declareWinner(){
   if (playerScore < compScore){
     info.innerText = `Computer has won total ${totalRounds} rounds.`;
