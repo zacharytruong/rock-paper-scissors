@@ -42,6 +42,7 @@ function getResults(){
             (playerSelection === 'paper' && compSelection === 'scissor') ){
     ++compScore;
     if (compScore === 5) return declareWinner();
+    capitalizeStr();
     info.innerText = `Your choice: ${playerSelection}
                   Computer's choice: ${compSelection}
                   Computer won this round. 
@@ -52,6 +53,7 @@ function getResults(){
             (playerSelection === 'scissor' && compSelection === 'paper') || 
             (playerSelection === 'paper' && compSelection === 'rock') ){
     ++playerScore;
+    capitalizeStr();
     info.innerText = `Your choice: ${playerSelection}
                   Computer's choice: ${compSelection}
                   You won this round. 
@@ -60,6 +62,7 @@ function getResults(){
     div.appendChild(info);
     if (playerScore === 5) return declareWinner();
   } else {
+    capitalizeStr();
     info.innerText = `Your choice: ${playerSelection}
                   Computer's choice: ${compSelection}
                   Draw! 
@@ -83,4 +86,9 @@ function declareWinner(){
                       You have won total ${totalRounds} rounds.`;
     div.appendChild(info);
   }
+}
+
+function capitalizeStr(){
+  playerSelection = playerSelection.toUpperCase();
+  compSelection = compSelection.toUpperCase();
 }
