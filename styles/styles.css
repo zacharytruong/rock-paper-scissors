@@ -43,6 +43,7 @@ html {
 
   .item:hover{
     background: rgba(255,255,255,0.4);
+    color: #000;
   }
 
   .info {
