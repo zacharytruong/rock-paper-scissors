@@ -41,6 +41,7 @@ function getResults(){
             (playerSelection === 'scissor' && compSelection === 'rock') || 
             (playerSelection === 'paper' && compSelection === 'scissor') ){
     ++compScore;
+    if (compScore === 5) return declareWinner();
     info.innerText = `Your choice: ${playerSelection}
                   Computer's choice: ${compSelection}
                   Computer won this round. 
@@ -57,6 +58,7 @@ function getResults(){
                   You have won: ${playerScore}
                   Computer has won: ${compScore}`;
     div.appendChild(info);
+    if (playerScore === 5) return declareWinner();
   } else {
     info.innerText = `Your choice: ${playerSelection}
                   Computer's choice: ${compSelection}
@@ -69,10 +71,16 @@ function getResults(){
 
 function declareWinner(){
   if (playerScore < compScore){
-    info.innerText = `Computer has won total ${totalRounds} rounds.`;
+    info.innerText = `Your choice: ${playerSelection}
+                      Computer's choice: ${compSelection}
+                      You have won: ${playerScore}
+                      Computer has won total ${totalRounds} rounds.`;
     div.appendChild(info);
   } else {
-    info.innerText = `Computer has won total ${totalRounds} rounds.`;
+    info.innerText = `Your choice: ${playerSelection}
+                      Computer's choice: ${compSelection}
+                      Computer has won: ${compScore}
+                      You have won total ${totalRounds} rounds.`;
     div.appendChild(info);
   }
 }
