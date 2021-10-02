@@ -5,58 +5,66 @@ let totalRounds = 5;
 let playerSelection = '';
 let compSelection = '';
 const itemArr = ['rock', 'paper', 'scissor'];
-
 const div = document.querySelector('.info');
 const info = document.createElement('p');
-info.innerText = `Your choice: None
-                  Computer's choice: None
-                  You have won: None
-                  Computer has won: None`;
+info.innerText = `Your choice: ${playerSelection}
+                  Computer's choice: ${compSelection}
+
+                  You have won: ${playerScore}
+                  Computer has won: ${compScore}`;
 div.appendChild(info);
 
-
 const buttons = document.querySelectorAll('button');
+buttons.forEach(startEvent);
+function startEvent(button){
+  button.addEventListener('click', playGame);
+  function playGame(e){
+    if (e.target.id === 'reset'){
+      playerScore = 0;
+      compScore = 0;
+      info.innerText = `Your choice: ${playerSelection}
+                  Computer's choice: ${compSelection}
 
-buttons.forEach(startGame);
-function startGame(button){
-  button.addEventListener('click', playRound);
-  function playRound(e){
-    playerSelection = e.target.id;
-    let randomNumber = Math.floor(Math.random() * 3);
-    compSelection = itemArr[randomNumber];
-    compareSelections();
+                  You have won: ${playerScore}
+                  Computer has won: ${compScore}`;
+      div.appendChild(info);
+    } else if (playerScore < 5 && compScore < 5){
+      playerSelection = e.target.id;
+      let randomNum = Math.floor(Math.random() * 3);
+      compSelection = itemArr[randomNum];
+      getResults();
+    } else declareWinner();
   }
 }
-
-function compareSelections(){
+function getResults(){
   if ( (playerSelection === 'rock' && compSelection === 'paper') || 
             (playerSelection === 'scissor' && compSelection === 'rock') || 
             (playerSelection === 'paper' && compSelection === 'scissor') ){
-    compScore = ++compScore;
+    ++compScore;
     info.innerText = `Your choice: ${playerSelection}
                   Computer's choice: ${compSelection}
-                  You lost this round.
+                  Computer won this round. 
                   You have won: ${playerScore}
                   Computer has won: ${compScore}`;
     div.appendChild(info);
   } else if ( (playerSelection === 'rock' && compSelection === 'scissor') || 
             (playerSelection === 'scissor' && compSelection === 'paper') || 
             (playerSelection === 'paper' && compSelection === 'rock') ){
-    playerScore = ++playerScore;
+    ++playerScore;
     info.innerText = `Your choice: ${playerSelection}
                   Computer's choice: ${compSelection}
-                  You won this round.
+                  You won this round. 
                   You have won: ${playerScore}
                   Computer has won: ${compScore}`;
     div.appendChild(info);
   } else {
     info.innerText = `Your choice: ${playerSelection}
                   Computer's choice: ${compSelection}
-                  Draw!
+                  Draw! 
                   You have won: ${playerScore}
                   Computer has won: ${compScore}`;
     div.appendChild(info);
-    }
+  }
 }
 
 function declareWinner(){
@@ -64,7 +72,7 @@ function declareWinner(){
     info.innerText = `Computer has won total ${totalRounds} rounds.`;
     div.appendChild(info);
   } else {
-    info.innerText = `You has won total ${totalRounds} rounds.`;
+    info.innerText = `Computer has won total ${totalRounds} rounds.`;
     div.appendChild(info);
   }
 }
