@@ -6,12 +6,6 @@ html {
     /* background-image: linear-gradient(to right, #434343 0%, black 100%); */
   }
   
-  body,html {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-  }
-  
   .items {
     display: flex;
     flex: 1;
@@ -35,14 +29,14 @@ html {
     text-shadow: 0 0 .5rem black;
   }
   
-  .item:active {
+  .hilight:active {
     transform: scale(1.1);
     border-color: #ffc600;
     box-shadow: 0 0 1rem #ffc600;
   }
 
-  .item:hover{
-    background: rgba(255,255,255,0.4);
+  .hilight:hover{
+    background: #FFF;
     color: #000;
   }
 
@@ -53,8 +47,29 @@ html {
     font-size: 1.5rem;
     padding: 1.5rem .5rem;
     transition: all .07s ease;
-    width: 70%;
+    width: 50rem;
     color: white;
     background: rgba(0,0,0,0.5);
     text-shadow: 0 0 .5rem black;
+    text-align: center;
   }
+
+.scores {
+  display: flex;
+}
+
+.score {
+  background-color: #FFF;
+  color: #000;
+  padding: 3rem 0;
+  font-size: 3rem;
+  margin: 0;
+  width: 100%;
+}
+.name {
+  font-size: 2rem;
+  padding: 1rem 0;
+}
+.no-padding {
+  padding: 0;
+}

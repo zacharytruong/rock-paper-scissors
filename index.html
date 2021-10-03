@@ -17,14 +17,26 @@
 <body>
   <div class="items">
     <div>
-      <button id="rock" class="item">Rock</button>
-      <button id="paper"  class="item">Paper</button>
-      <button id="scissor"  class="item">Scissors</button>
+      <button id="rock" class="item hilight">Rock</button>
+      <button id="paper"  class="item hilight">Paper</button>
+      <button id="scissor"  class="item hilight">Scissors</button>
     </div>
-    <div class="info hidden"></div> 
-    <button id="reset"  class="item">New Game</button>
+    <div class="info">
+      <p>INFO BOX</p>
+    </div>
+    <div class="scores">
+      <div class="item no-padding">
+        <p id="player" class="score">Score</p>
+        <p class="name">Player</p>
+      </div>
+      <div class="item no-padding">
+        <p id="computer" class="score">Score</p>
+        <p class="name">Computer</p>
+      </div>
+    </div>
+    <div class="newGame">
+      <button id="newGame" class="item hilight">New Game</button>
+    </div>
   </div>
-  
-
 </body>
 </html>
