@@ -9,6 +9,9 @@ const info = document.querySelector('.info');
 let player = document.querySelector('#player');
 let computer = document.querySelector('#computer');
 const para = document.createElement('p');
+const historyContent = document.querySelector('.historyContent');
+const historyList = document.createElement('li');
+let winner = '';
 
 const buttons = document.querySelectorAll('button');
 buttons.forEach(startEvent);
@@ -19,6 +22,7 @@ function startEvent(button){
       playerScore = 0;
       compScore = 0;
       info.innerText = `INFO BOX`;
+      
     } else if (playerScore < 5 && compScore < 5){
       playerSelection = e.target.id;
       let randomNum = Math.floor(Math.random() * 3);
@@ -34,21 +38,28 @@ function getResults(){
     ++compScore;
     capitalizeStr();
     info.innerText = `Computer played ${compSelection}. ${compSelection} beats ${playerSelection}. Computer won this round.`;
-    displayScores()
+    winner = 'Computer';
+    displayScores();
+    displayHistory();
   } else if ( (playerSelection === 'rock' && compSelection === 'scissor') || 
             (playerSelection === 'scissor' && compSelection === 'paper') || 
             (playerSelection === 'paper' && compSelection === 'rock') ){
     ++playerScore;
     capitalizeStr();
     info.innerText = `Computer played ${compSelection}. ${playerSelection} beats ${compSelection}. You won this round.`;
+    winner = 'Computer';
     displayScores()
+    displayHistory();
   } else {
     capitalizeStr();
     info.innerText = `Computer played ${compSelection}. Draw!`;
-    displayScores()
+    winner = `None`;
+    displayScores();
+    displayHistory();
   }
   if (playerScore === 5 || compScore === 5){
     para.innerText = declareWinner();
+    displayHistory();
   }
 }
 
@@ -58,11 +69,13 @@ function declareWinner(){
                       ${compSelection} beats ${playerSelection}.
                       Computer has won total ${totalRounds} rounds. 
                       Click 'New Game' button to start a new game.`;
+    winner = 'Computer';
   } else {
     info.innerText = `Computer played ${compSelection}.
                       ${playerSelection} beats ${compSelection}.
                       You have won total ${totalRounds} rounds.
                       Click 'New Game' button to start a new game.`;
+    winner = 'Player';
   }
 }
 
@@ -74,4 +87,11 @@ function capitalizeStr(){
 function displayScores(){
   player.innerText = playerScore;
   computer.innerText = compScore;
+  
+}
+
+function displayHistory(){
+  let historyTextNode = document.createTextNode(`Playe chose: ${playerSelection}. Computer chose: ${compSelection}. ${winner} won this round.`);
+  historyList.appendChild(historyTextNode);
+  historyContent.appendChild(historyList);
 }
