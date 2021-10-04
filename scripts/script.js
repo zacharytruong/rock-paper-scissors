@@ -47,7 +47,7 @@ function getResults(){
     info.innerText = `Computer played ${compSelection}. Draw!`;
     displayScores()
   }
-  if (playerScore === 5 || computer === 5){
+  if (playerScore === 5 || compScore === 5){
     para.innerText = declareWinner();
   }
 }

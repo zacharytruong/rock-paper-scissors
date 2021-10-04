@@ -1,58 +1,65 @@
 html {
     font-size: 10px;
-    background: url('./../resources/main-background.jpg') center center;
+    background: url('./../resources/main-background.jpg') center center no-repeat;
     background-size: cover;
-
-    /* background-image: linear-gradient(to right, #434343 0%, black 100%); */
-  }
-  
-  .items {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
     min-height: 100vh;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .item {
-    border: .4rem solid #FFF;
-    border-radius: .5rem;
-    margin: 1rem;
-    font-size: 1.5rem;
-    padding: 1.5rem .5rem;
-    transition: all .07s ease;
-    width: 15rem;
-    text-align: center;
-    color: white;
-    background: rgba(0,0,0,0.3);
-    text-shadow: 0 0 .5rem black;
-  }
-  
-  .hilight:active {
-    transform: scale(1.1);
-    border-color: #ffc600;
-    box-shadow: 0 0 1rem #ffc600;
-  }
+}
+.mainContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gameHistory {
+  min-height: 100vh;
+  width: 25%;
+}
+.items {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+}
 
-  .hilight:hover{
-    background: #FFF;
-    color: #000;
-  }
+.item {
+  border: .4rem solid #FFF;
+  border-radius: .5rem;
+  margin: 1rem;
+  font-size: 1.5rem;
+  padding: 1.5rem .5rem;
+  transition: all .07s ease;
+  width: 15rem;
+  text-align: center;
+  color: white;
+  background: rgba(0,0,0,0.3);
+  text-shadow: 0 0 .5rem black;
+}
 
-  .info {
-    border: .4rem solid #FFF;
-    border-radius: .5rem;
-    margin: 1rem;
-    font-size: 1.5rem;
-    padding: 1.5rem .5rem;
-    transition: all .07s ease;
-    width: 50rem;
-    color: white;
-    background: rgba(0,0,0,0.5);
-    text-shadow: 0 0 .5rem black;
-    text-align: center;
-  }
+.hilight:active {
+  transform: scale(1.1);
+  border-color: #ffc600;
+  box-shadow: 0 0 1rem #ffc600;
+}
+
+.hilight:hover{
+  background: #FFF;
+  color: #000;
+}
+
+.info {
+  border: .4rem solid #FFF;
+  border-radius: .5rem;
+  margin: 1rem;
+  font-size: 1.5rem;
+  padding: 1.5rem .5rem;
+  transition: all .07s ease;
+  width: 40rem;
+  color: white;
+  background: rgba(0,0,0,0.5);
+  text-shadow: 0 0 .5rem black;
+  text-align: center;
+}
 
 .scores {
   display: flex;
@@ -70,6 +77,6 @@ html {
   font-size: 2rem;
   padding: 1rem 0;
 }
-.no-padding {
+.noPadding {
   padding: 0;
 }
