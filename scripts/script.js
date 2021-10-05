@@ -10,7 +10,6 @@ let player = document.querySelector('#player');
 let computer = document.querySelector('#computer');
 const para = document.createElement('p');
 const historyContent = document.querySelector('.historyContent');
-const historyList = document.createElement('li');
 let winner = '';
 
 const buttons = document.querySelectorAll('button');
@@ -19,15 +18,14 @@ function startEvent(button){
   button.addEventListener('click', playGame);
   function playGame(e){
     if (e.target.id === 'newGame'){
-      playerScore = 0;
-      compScore = 0;
-      info.innerText = `INFO BOX`;
-      
+      reset();
     } else if (playerScore < 5 && compScore < 5){
       playerSelection = e.target.id;
       let randomNum = Math.floor(Math.random() * 3);
       compSelection = itemArr[randomNum];
       getResults();
+      displayScores();
+      displayHistory();
     } else declareWinner();
   }
 }
@@ -39,8 +37,6 @@ function getResults(){
     capitalizeStr();
     info.innerText = `Computer played ${compSelection}. ${compSelection} beats ${playerSelection}. Computer won this round.`;
     winner = 'Computer';
-    displayScores();
-    displayHistory();
   } else if ( (playerSelection === 'rock' && compSelection === 'scissor') || 
             (playerSelection === 'scissor' && compSelection === 'paper') || 
             (playerSelection === 'paper' && compSelection === 'rock') ){
@@ -48,18 +44,13 @@ function getResults(){
     capitalizeStr();
     info.innerText = `Computer played ${compSelection}. ${playerSelection} beats ${compSelection}. You won this round.`;
     winner = 'Computer';
-    displayScores()
-    displayHistory();
   } else {
     capitalizeStr();
     info.innerText = `Computer played ${compSelection}. Draw!`;
     winner = `None`;
-    displayScores();
-    displayHistory();
   }
   if (playerScore === 5 || compScore === 5){
     para.innerText = declareWinner();
-    displayHistory();
   }
 }
 
@@ -91,7 +82,19 @@ function displayScores(){
 }
 
 function displayHistory(){
-  let historyTextNode = document.createTextNode(`Playe chose: ${playerSelection}. Computer chose: ${compSelection}. ${winner} won this round.`);
-  historyList.appendChild(historyTextNode);
-  historyContent.appendChild(historyList);
+  const node = document.createElement('li');
+  let textNode = document.createTextNode(`Playe chose: ${playerSelection}. Computer chose: ${compSelection}. ${winner} won this round.`);
+  node.appendChild(textNode);
+  historyContent.appendChild(node);
+}
+
+function reset(){
+  playerScore = 0;
+  compScore = 0;
+  info.innerText = `INFO BOX`;
+  player.innerText = 'Score';
+  computer.innerText = 'Score';
+  while (historyContent.firstChild){
+    historyContent.removeChild(historyContent.firstChild);
+  }
 }
