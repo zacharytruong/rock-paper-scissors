@@ -65,6 +65,15 @@ html {
   color: #000;
 }
 
+.icon {
+  display: block;
+  margin: 0 auto;
+}
+
+.hilight:hover .icon path {
+  fill: #000;
+}
+
 .info {
   border: .4rem solid #FFF;
   border-radius: .5rem;
@@ -97,4 +106,10 @@ html {
 }
 .noPadding {
   padding: 0;
+}
+
+@media (max-width: 750px){
+  .mainContainer {
+    flex-direction: column;
+  }
 }
