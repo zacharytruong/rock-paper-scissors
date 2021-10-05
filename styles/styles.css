@@ -109,7 +109,45 @@ html {
 }
 
 @media (max-width: 750px){
-  .mainContainer {
-    flex-direction: column;
+  .gameHistory {
+    display: none;
+  }
+}
+
+@media (max-width: 515px){
+  .item {
+    margin: 0 .5rem;
+    padding: 0;
+    width: 10rem;
+  }
+  .info {
+    margin: 2rem auto;
+    width: 50%;
+  }
+  #newGame {
+    margin: 2rem auto;
+    padding: 1rem .5rem;
+  }
+}
+
+@media (max-width: 335px){
+  .selection {
+    width: 100%;
+    text-align: center;
+  }
+  .item {
+    margin: 0 1%;
+    width: 30%;
+  }
+  .info {
+    margin: 1.5rem 0;
+    width: 90%;
+  }
+  .scores {
+    width: 90%;
+    justify-content: center;
+  }
+  #newGame {
+    width: 20rem;
   }
 }
