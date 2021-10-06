@@ -20,7 +20,7 @@ function startEvent(button){
     if (e.target.id === 'newGame'){
       reset();
     } else if (playerScore < 5 && compScore < 5){
-      playerSelection = e.target.id;
+      playerSelection = this.id;
       let randomNum = Math.floor(Math.random() * 3);
       compSelection = itemArr[randomNum];
       getResults();

@@ -52,6 +52,7 @@ html {
   color: white;
   background: rgba(0,0,0,0.3);
   text-shadow: 0 0 .5rem black;
+  z-index: 10;
 }
 
 .hilight:active {
@@ -68,6 +69,7 @@ html {
 .icon {
   display: block;
   margin: 0 auto;
+  z-index: 2;
 }
 
 .hilight:hover .icon path {
